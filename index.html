@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOS SOLUÇÕES E SERVIÇOS - Construção, Reformas e Pinturas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           CONFIGURAÇÕES DE CORES E ESTILO GERAL
+           ========================================================================== */
+        :root {
+            --azul-principal: #003366;
+            --azul-claro: #00509d;
+            --cinza-escuro: #333333;
+            --cinza-claro: #f4f4f4;
+            --branco: #ffffff;
+            --whatsapp-color: #25d366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--cinza-escuro);
+            background-color: var(--branco);
+        }
+
+        /* ==========================================================================
+           HEADER E NAVEGAÇÃO
+           ========================================================================== */
+        header {
+            background-color: var(--azul-principal);
+            color: var(--branco);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: var(--branco);
+            text-decoration: none;
+            font-weight: 400;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ccc;
+        }
+
+        /* ==========================================================================
+           SEÇÕES (HERO, SOBRE, SERVIÇOS)
+           ========================================================================== */
+        section {
+            padding: 80px 10% 40px;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,51,102,0.8), rgba(0,51,102,0.8)), url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1332&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--branco);
+            text-align: center;
+            padding: 120px 10%;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--azul-principal);
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 50px;
+            height: 3px;
+            background: var(--azul-claro);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .service-card {
+            padding: 30px;
+            background: var(--cinza-claro);
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* ==========================================================================
+           GALERIA (PORTFÓLIO) COM CARROSSEL
+           ========================================================================== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background: var(--branco);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            height: 100%;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-prev, .carousel-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .carousel-prev {
+            left: 10px;
+        }
+
+        .carousel-next {
+            right: 10px;
+        }
+
+        /* Suporte a swipe (touch) */
+        .carousel-inner {
+            touch-action: pan-y;
+        }
+
+        .gallery-info {
+            padding: 15px;
+        }
+
+        .gallery-info h4 {
+            margin-bottom: 5px;
+            color: var(--azul-principal);
+        }
+
+        /* ==========================================================================
+           CONTATO E RODAPÉ
+           ========================================================================== */
+        .contact-info {
+            background: var(--azul-principal);
+            color: var(--branco);
+            text-align: center;
+            padding: 60px 10%;
+        }
+
+        .contact-details p {
+            margin: 15px 0;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            background: #222;
+            color: #999;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        .btn-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp-color);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            text-decoration: none;
+            font-size: 30px;
+        }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; }
+            nav ul { margin-top: 15px; }
+            nav ul li { margin: 0 10px; }
+            .hero h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<script>
+const TRABALHOS_REALIZADOS = [
+    {
+        titulo: "Construção Completa",
+        descricao: "Projeto executado do início ao acabamento fino.",
+        imagens: ["foto.jpg", "constru.jpg", "constru1.jpg"]  
+    },
+    {
+        titulo: "Reformas Gerais",
+        descricao: "Atuando para a melhoria do seu imóvel.",
+        imagens: ["foto1.jpg", "reforma1.jpg", "design.jpg"]  
+    },
+    {
+        titulo: "Interior, Acabamento e Pintura",
+        descricao: "Feitos por profissionais de qualidade que entregam o melhor resultado para o cliente.",
+        imagens: ["foto2.jpg", "design2.jpg", "design3.jpg"]  
+    }
+];
+</script>
+
+<header>
+    <div class="logo">
+        <h1>SOS SOLUÇÕES E SERVIÇOS</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#home">Início</a></li>
+            <li><a href="#sobre">Empresa</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#galeria">Portfólio</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <h2>SOS SOLUÇÕES E SERVIÇOS</h2>
+    <p>Transformando sonhos em realidade com qualidade e confiança.</p> <!-- Adicionei um texto exemplo, pois estava vazio -->
+</section>
+
+<section id="sobre">
+    <h3 class="section-title">Sobre a Empresa</h3>
+    <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+        <p><strong>A SOS SOLUÇÕES E SERVIÇOS é consolidada pelo mercado através de mais de 20 anos de experiência. Nossa missão é transformar o sonho da casa própria ou da reforma desejada em realidade, prezando sempre pela transparência, cumprimento de prazos e altíssima qualidade técnica.</p>
+        <p style="margin-top: 20px;">Atendemos toda a região de Ribeirão Preto e o distrito de Bonfim Paulista, focando no público residencial e comercial que busca um serviço sério e confiável.</p>
+    </div>
+</section>
+
+<section id="servicos" style="background-color: var(--cinza-claro);">
+    <h3 class="section-title">Nossos Serviços</h3>
+    <div class="services-grid">
+        <div class="service-card">
+            <h4>Construção do Zero</h4>
+            <p>Gerenciamos sua obra do início ao fim.</p>
+        </div>
+        <div class="service-card">
+            <h4>Reformas</h4>
+            <p>Modernização e ampliação de ambientes.</p>
+        </div>
+        <div class="service-card">
+            <h4>Pinturas</h4>
+            <p>Pintura interna e externa.</p>
+        </div>
+    </div>
+</section>
+
+<section id="galeria">
+    <h3 class="section-title">Trabalhos Realizados</h3>
+    <div class="gallery-grid" id="galleryContainer"></div>
+</section>
+
+<section class="contact-info" id="contato">
+    <h3 class="section-title" style="color:white;">Fale Conosco</h3>
+    <p><strong>Telefone / WhatsApp:</strong> (16) 99154-2588</p>
+    <p><strong>E-mail:</strong> sos.residencia@gmail.com</p>
+</section>
+
+<footer>
+    <p>&copy; 2026 SOS SOLUÇÕES E SERVIÇOS</p>
+</footer>
+
+<a href="https://wa.me/5516991542588?text=Olá!%20Gostaria%20de%20um%20orçamento." 
+   class="btn-whatsapp" 
+   target="_blank" 
+   title="Chamar no WhatsApp">
+    <span style="font-size: 28px;">💬</span>
+</a>
+
+<script>
+function carregarGaleria() {
+    const container = document.getElementById('galleryContainer');
+    TRABALHOS_REALIZADOS.forEach((item, index) => {
+        let carouselItems = '';
+        item.imagens.forEach(img => {
+            carouselItems += `<div class="carousel-item"><img src="${img}"></div>`;
+        });
+
+        container.innerHTML += `
+        <div class="gallery-item">
+            <div class="carousel" id="carousel-${index}">
+                <button class="carousel-prev" onclick="moveSlide(${index}, -1)">&#10094;</button>
+                <div class="carousel-inner">${carouselItems}</div>
+                <button class="carousel-next" onclick="moveSlide(${index}, 1)">&#10095;</button>
+            </div>
+            <div class="gallery-info">
+                <h4>${item.titulo}</h4>
+                <p>${item.descricao}</p>
+            </div>
+        </div>`;
+
+        // Inicializa swipe para cada carrossel
+        initSwipe(`carousel-${index}`);
+    });
+}
+
+let currentSlides = Array(TRABALHOS_REALIZADOS.length).fill(0);
+
+function moveSlide(carouselIndex, direction) {
+    const carouselInner = document.querySelector(`#carousel-${carouselIndex} .carousel-inner`);
+    const totalSlides = carouselInner.children.length;
+    currentSlides[carouselIndex] = (currentSlides[carouselIndex] + direction + totalSlides) % totalSlides;
+    carouselInner.style.transform = `translateX(-${currentSlides[carouselIndex] * 100}%)`;
+}
+
+// Função para suporte a swipe (touch)
+function initSwipe(carouselId) {
+    const carousel = document.getElementById(carouselId);
+    const inner = carousel.querySelector('.carousel-inner');
+    let startX, isDragging = false;
+
+    inner.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+    });
+
+    inner.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const currentX = e.touches[0].clientX;
+        const diff = startX - currentX;
+        if (Math.abs(diff) > 50) {  // Limite para detectar swipe
+            moveSlide(parseInt(carouselId.split('-')[1]), diff > 0 ? 1 : -1);
+            isDragging = false;
+        }
+    });
+
+    inner.addEventListener('touchend', () => {
+        isDragging = false;
+    });
+}
+
+window.onload = carregarGaleria;
+</script>
+
+</body>
+</html>
